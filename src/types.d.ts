@@ -25,3 +25,22 @@ export interface PostPreview {
   publishDate: string
   owner: UserPreview
 }
+export interface PostPreviews {
+  data: PostPreview[]
+  total: number
+  page: number
+  limit: number
+}
+export interface Comment {
+  id: string
+  message: string
+  owner: UserPreview
+  post: string
+  publishDate: string
+}
+export interface Comments {
+  data: Comment[]
+  total: number
+  page: number
+  limit: number
+}

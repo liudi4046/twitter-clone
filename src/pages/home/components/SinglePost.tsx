@@ -1,14 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
 import calTime from "../../../lib/calTime"
 import { PostPreview } from "../../../types"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined"
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined"
 import { IconButton } from "@mui/material"
+import { useLikedPosts } from "../../../context/LikedPostsContext"
+import CommentSection from "./CommentSection"
+import useQuery from "../../../hooks/useQuery"
 interface Props {
   post: PostPreview
 }
 
 export default function SinglePost({ post }: Props) {
+  const { likedPosts, toggleLikedPosts } = useLikedPosts()
+  const [isCommentOpened, setIsCommentOpened] = useState(false)
   const text = post.text
   const id = post.id
   const image = post.image
@@ -18,6 +24,13 @@ export default function SinglePost({ post }: Props) {
 
   const diff = calTime(publishDate)
 
+  let isLiked = likedPosts.includes(id)
+  const handleLiked = () => {
+    toggleLikedPosts(id)
+  }
+  const handleComment = () => {
+    setIsCommentOpened((prev) => !prev)
+  }
   return (
     <li className="mb-3 rounded-lg p-2 mx-1 drop-shadow-2xl bg-gradient-to-r shadow-lg">
       {/* each post preview */}
@@ -41,14 +54,24 @@ export default function SinglePost({ post }: Props) {
 
           <h1>{text}</h1>
           <div className="flex gap-3 mt-2">
-            <IconButton>
-              <FavoriteBorderIcon fontSize="small" />
+            <IconButton onClick={handleLiked}>
+              {isLiked ? (
+                <FavoriteOutlinedIcon
+                  fontSize="small"
+                  style={{ color: "red" }}
+                />
+              ) : (
+                <FavoriteBorderIcon fontSize="small" />
+              )}
             </IconButton>
-
-            <CommentOutlinedIcon fontSize="small" />
+            <IconButton onClick={handleComment}>
+              <CommentOutlinedIcon fontSize="small" />
+            </IconButton>
           </div>
         </div>
       </div>
+      {/* comment section */}
+      {isCommentOpened ? <CommentSection postId={id} /> : null}
     </li>
   )
 }
