@@ -32,7 +32,7 @@ export default function SinglePost({ post }: Props) {
     setIsCommentOpened((prev) => !prev)
   }
   return (
-    <li className="mb-3 rounded-lg p-2 mx-1 drop-shadow-2xl bg-gradient-to-r shadow-lg">
+    <li className="mb-3 rounded-lg p-2 mx-1 drop-shadow-2xl bg-gradient-to-r shadow-lg ">
       {/* each post preview */}
       <div className="flex gap-3">
         {/* avatar column */}

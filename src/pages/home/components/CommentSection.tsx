@@ -5,7 +5,8 @@ import { Comments } from "../../../types"
 export default function CommentSection({ postId }: { postId: string }) {
   const { data, isLoading, error } = useQuery<Comments>(
     `https://dummyapi.io/data/v1/post/${postId}/comment`,
-    "GET"
+    "GET",
+    {}
   )
   console.log(data)
   return (
@@ -15,7 +16,7 @@ export default function CommentSection({ postId }: { postId: string }) {
       {data &&
         data.data.map((comment) => {
           return (
-            <div key={comment.id} className=" my-3 ">
+            <div key={comment.id} className=" my-3 border-b-2 border-slate-300">
               <div className="flex items-center gap-5 mb-1">
                 <img
                   src="comment.owner.picture"
