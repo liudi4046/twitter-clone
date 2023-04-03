@@ -1,32 +1,31 @@
 import React, { useState } from "react"
 import calTime from "../../../lib/calTime"
-import { PostPreview } from "../../../types"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined"
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined"
 import { IconButton } from "@mui/material"
 import { useLikedPosts } from "../../../context/LikedPostsContext"
 import CommentSection from "./CommentSection"
-import useQuery from "../../../hooks/useQuery"
+import { CommentOutlined, LikeFilled, LikeOutlined } from "@ant-design/icons"
+import { Post } from "../../../types"
+import { Button } from "antd"
+
 interface Props {
-  post: PostPreview
+  post: Post
 }
 
 export default function SinglePost({ post }: Props) {
-  const { likedPosts, toggleLikedPosts } = useLikedPosts()
+  const [isLiked, setIsLiked] = useState(false)
   const [isCommentOpened, setIsCommentOpened] = useState(false)
-  const text = post.text
+  const text = post.body
   const id = post.id
-  const image = post.image
-  const likes = post.likes
-  const publishDate = post.publishDate
-  const owner = post.owner
+  const title = post.title
+  const reactions = post.reactions
 
-  const diff = calTime(publishDate)
+  const userId = post.userId
 
-  let isLiked = likedPosts.includes(id)
   const handleLiked = () => {
-    toggleLikedPosts(id)
+    setIsLiked((prev) => !prev)
   }
   const handleComment = () => {
     setIsCommentOpened((prev) => !prev)
@@ -34,42 +33,36 @@ export default function SinglePost({ post }: Props) {
   return (
     <li className="mb-3 rounded-lg p-2 mx-1 drop-shadow-2xl bg-gradient-to-r shadow-lg ">
       {/* each post preview */}
-      <div className="flex gap-3">
-        {/* avatar column */}
-        <div className="flex">
-          <img
-            src={image}
-            placeholder="img here"
-            className="w-12 h-12 rounded-full shadow"
-          />
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
+          <h1 className="font-bold text-center">{title}</h1>
+          <h1 className="text-sm text-center">{userId}</h1>
         </div>
-        {/* name and text column */}
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-3">
-            <h1 className="font-bold">
-              {owner.firstName} {owner.lastName}
-            </h1>
-            <h1 className="text-xs font-extralight">{diff}</h1>
+
+        <h1>{text}</h1>
+        <div className="flex gap-3 mt-2 hover:cursor-pointer">
+          <div onClick={handleLiked}>
+            {isLiked ? (
+              <Button
+                type="link"
+                icon={<LikeFilled style={{ fontSize: "large" }} />}
+              />
+            ) : (
+              <Button
+                type="link"
+                icon={<LikeOutlined style={{ fontSize: "large" }} />}
+              />
+            )}
           </div>
 
-          <h1>{text}</h1>
-          <div className="flex gap-3 mt-2">
-            <IconButton onClick={handleLiked}>
-              {isLiked ? (
-                <FavoriteOutlinedIcon
-                  fontSize="small"
-                  style={{ color: "red" }}
-                />
-              ) : (
-                <FavoriteBorderIcon fontSize="small" />
-              )}
-            </IconButton>
-            <IconButton onClick={handleComment}>
-              <CommentOutlinedIcon fontSize="small" />
-            </IconButton>
-          </div>
+          <Button
+            type="link"
+            onClick={handleComment}
+            icon={<CommentOutlined style={{ fontSize: "large" }} />}
+          />
         </div>
       </div>
+
       {/* comment section */}
       {isCommentOpened ? <CommentSection postId={id} /> : null}
     </li>

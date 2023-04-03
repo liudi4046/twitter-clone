@@ -10,7 +10,7 @@ export default function SearchBar({
   return (
     <div className="my-3">
       <Search
-        placeholder="输入用户名查找贴文，例如：Sara Andersen"
+        placeholder="输入内容或标题查找贴文"
         allowClear
         enterButton="Search"
         color="red"

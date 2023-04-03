@@ -1,46 +1,136 @@
-export interface Post {
-  id: string
-  text: string
-  image: string
-  likes: number
-  link: string
-  tags: string[]
-  publishDate: string
-  owner: UserPreview
+//Posts
+export interface Posts {
+  posts: Post[]
+  total: number
+  skip: number
+  limit: number
 }
 
-export interface UserPreview {
-  id: string
+export interface Post {
+  id: number
   title: string
+  body: string
+  userId: number
+  tags: string[]
+  reactions: number
+}
+
+// Users
+
+export interface Users {
+  users: User[]
+  total: number
+  skip: number
+  limit: number
+}
+
+export interface User {
+  id: number
   firstName: string
   lastName: string
-  picture: string
-}
-export interface PostPreview {
-  id: string
-  text: string
+  maidenName: string
+  age: number
+  gender: Gender
+  email: string
+  phone: string
+  username: string
+  password: string
+  birthDate: Date
   image: string
-  likes: number
-  tags: string[]
-  publishDate: string
-  owner: UserPreview
+  bloodGroup: string
+  height: number
+  weight: number
+  eyeColor: EyeColor
+  hair: Hair
+  domain: string
+  ip: string
+  address: Address
+  macAddress: string
+  university: string
+  bank: Bank
+  company: Company
+  ein: string
+  ssn: string
+  userAgent: string
 }
-export interface PostPreviews {
-  data: PostPreview[]
-  total: number
-  page: number
-  limit: number
+
+export interface Address {
+  address: string
+  city?: string
+  coordinates: Coordinates
+  postalCode: string
+  state: string
 }
-export interface Comment {
-  id: string
-  message: string
-  owner: UserPreview
-  post: string
-  publishDate: string
+
+export interface Coordinates {
+  lat: number
+  lng: number
 }
+
+export interface Bank {
+  cardExpire: string
+  cardNumber: string
+  cardType: string
+  currency: string
+  iban: string
+}
+
+export interface Company {
+  address: Address
+  department: string
+  name: string
+  title: string
+}
+
+export enum EyeColor {
+  Amber = "Amber",
+  Blue = "Blue",
+  Brown = "Brown",
+  Gray = "Gray",
+  Green = "Green",
+}
+
+export enum Gender {
+  Female = "female",
+  Male = "male",
+}
+
+export interface Hair {
+  color: Color
+  type: Type
+}
+
+export enum Color {
+  Auburn = "Auburn",
+  Black = "Black",
+  Blond = "Blond",
+  Brown = "Brown",
+  Chestnut = "Chestnut",
+}
+
+export enum Type {
+  Curly = "Curly",
+  Straight = "Straight",
+  Strands = "Strands",
+  VeryCurly = "Very curly",
+  Wavy = "Wavy",
+}
+//comments
 export interface Comments {
-  data: Comment[]
+  comments: Comment[]
   total: number
-  page: number
+  skip: number
   limit: number
+}
+
+export interface Comment {
+  id: number
+  body: string
+  postId: number
+  user: CommentUser
+}
+
+export interface CommentUser {
+  id: number
+  username: string
 }

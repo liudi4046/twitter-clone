@@ -1,41 +1,20 @@
 import React, { useEffect, useState } from "react"
 import SinglePost from "./SinglePost"
-import { Post, PostPreviews } from "../../../types"
-import useQuery from "../../../hooks/useQuery"
-import axios from "axios"
-import { PostPreview } from "../../../types"
+
+import { useQuery } from "@tanstack/react-query"
+import axios, { AxiosError } from "axios"
+
 import SearchBar from "./SearchBar"
-let i = 0
-interface Config {
-  onSuccess?: (data: PostPreviews) => void
-}
+import getPosts from "../../../lib/getPosts"
 
 export default function NewPosts() {
   const [searchTerm, setSearchTerm] = useState("")
   const [userMap, setUserMap] = useState<{ [key: string]: string }>({})
-
-  const { data, isLoading, error } = useQuery<PostPreviews>(
-    searchTerm.length
-      ? `https://dummyapi.io/data/v1/user/${userMap[searchTerm]}/post`
-      : "https://dummyapi.io/data/v1/post",
-    "GET",
-    searchTerm.length
-      ? {}
-      : {
-          onSuccess: (data) => {
-            const tempMap = data.data.reduce((acc, post) => {
-              return {
-                ...acc,
-                [post.owner.firstName + "_" + post.owner.lastName]:
-                  post.owner.id,
-              }
-            }, {})
-            setUserMap(tempMap)
-            console.log(tempMap)
-          },
-        }
+  const { data, isLoading, isError, error } = useQuery<any, AxiosError>(
+    ["posts", searchTerm],
+    () => getPosts(searchTerm, setUserMap, userMap)
   )
-
+  console.log(data)
   const onSearch: (value: string) => void = (value: string) => {
     const fullName = value.replace(/\s+/g, "_")
     console.log(fullName)
@@ -48,12 +27,12 @@ export default function NewPosts() {
       <ul>
         {isLoading && "isLoading"}
 
-        {error &&
-          (error.response?.status === 400
-            ? "没有找到该用户的发帖记录，点击清空按钮即可重新获取贴文"
-            : error?.message + "点击清空按钮即可重新获取贴文")}
+        {isError &&
+          (error?.response?.status === 400
+            ? "找不到该用户，点击清空按钮重新加载"
+            : error.message)}
         {data &&
-          data.data.map((post, index) => {
+          data.posts.map((post: any) => {
             return <SinglePost key={post.id} post={post} />
           })}
       </ul>
