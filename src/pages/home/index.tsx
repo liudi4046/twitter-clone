@@ -5,10 +5,8 @@ import RightBar from "./components/RightBar"
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-4">
-      <LeftBar />
+    <div className="flex justify-center">
       <NewPosts />
-      <RightBar />
     </div>
   )
 }

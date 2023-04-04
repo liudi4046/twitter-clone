@@ -13,6 +13,10 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query"
+import UserInfo from "./pages/userInfo"
+import NavBar from "./NavBar"
+import About from "./pages/about"
+import PostDetail from "./pages/postDetail"
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -26,15 +30,19 @@ function App() {
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#13c2c2",
+            colorPrimary: "",
           },
         }}
       >
         <LikedPostsProvider>
           <BrowserRouter>
+            <NavBar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/user/:userId" element={<UserInfo />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/postdetail/:postId" element={<PostDetail />} />
             </Routes>
           </BrowserRouter>
         </LikedPostsProvider>

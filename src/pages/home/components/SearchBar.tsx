@@ -8,7 +8,7 @@ export default function SearchBar({
   onSearch: (value: string) => void
 }) {
   return (
-    <div className="my-3">
+    <div className="my-3 w-6xl mx-auto">
       <Search
         placeholder="输入内容或标题查找贴文"
         allowClear
