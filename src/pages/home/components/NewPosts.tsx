@@ -61,7 +61,7 @@ export default function NewPosts() {
           })}
       </ul>
       <div
-        className={`flex justify-center my-4 gap-4 ${
+        className={`flex justify-center my-4 gap-[750px] ${
           data?.posts.length === 0 ? "hidden" : ""
         }`}
       >
