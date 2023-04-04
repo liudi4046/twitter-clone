@@ -61,18 +61,18 @@ export default function NewPosts() {
           })}
       </ul>
       <div
-        className={`flex justify-center my-4 gap-[750px] ${
+        className={`w-2/3 flex justify-end my-4 mx-auto gap-3 ${
           data?.posts.length === 0 ? "hidden" : ""
         }`}
       >
         <Button
-          variant="contained"
+          variant="outlined"
           disabled={pageNumber === 1}
           onClick={() => clickPrevious()}
         >
           上一页
         </Button>
-        <Button variant="contained" onClick={() => clickNext()}>
+        <Button variant="outlined" onClick={() => clickNext()}>
           下一页
         </Button>
         {/* <Button type="primary">下一页</Button> */}
