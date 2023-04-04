@@ -32,8 +32,8 @@ export default function CommentSection({ postId }: { postId: number }) {
             <div key={comment.id} className=" my-3 border-b-2 border-slate-300">
               <div className="flex items-center gap-5 mb-1">
                 <Link to={`/user/${comment.user.id}`}>
-                  <h1 className="font-bold hover:cursor-pointer underline hover:text-blue-300">
-                    {comment.user.username}
+                  <h1 className="font-bold hover:cursor-pointer  hover:text-blue-300 text-blue-800 text-sm">
+                    {comment.user.username} :
                   </h1>
                 </Link>
               </div>

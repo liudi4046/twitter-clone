@@ -62,7 +62,7 @@ export default function NewPosts() {
       </ul>
       <div
         className={`w-2/3 flex justify-end my-4 mx-auto gap-3 ${
-          data?.posts.length === 0 ? "hidden" : ""
+          data?.posts.length === 0 || isLoading ? "hidden" : ""
         }`}
       >
         <Button
