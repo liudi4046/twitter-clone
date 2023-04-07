@@ -7,8 +7,8 @@ const getPosts = async (term: string, pageNumber: number): Promise<Posts> => {
   return axios
     .get(
       !term.length
-        ? `https://dummyjson.com/posts?limit=6&skip=${(pageNumber - 1) * 6}`
-        : `https://dummyjson.com/posts/search?q=${term}&limit=6&skip=${
+        ? `http://localhost:3001/posts?_limit=6&_start=${(pageNumber - 1) * 6}`
+        : `http://localhost:3001/posts?q=${term}&_limit=6&_start=${
             (pageNumber - 1) * 6
           }`
     )

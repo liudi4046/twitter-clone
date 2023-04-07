@@ -19,7 +19,7 @@ export default function CommentSection({ postId }: { postId: number }) {
   console.log(data)
 
   return (
-    <div className="border border-slate-500 rounded-2xl p-3 bg-slate-200 mt-3">
+    <div className="border border-slate-200 rounded-2xl p-3 bg-slate-200 mt-3">
       {isLoading && (
         <div className="flex justify-center">
           <LoadingOutlined />
@@ -27,7 +27,7 @@ export default function CommentSection({ postId }: { postId: number }) {
       )}
       {error && error.message}
       {data &&
-        data.comments.map((comment) => {
+        data.map((comment) => {
           return (
             <div key={comment.id} className=" my-3 border-b-2 border-slate-300">
               <div className="flex items-center gap-5 mb-1">
@@ -42,7 +42,7 @@ export default function CommentSection({ postId }: { postId: number }) {
             </div>
           )
         })}
-      {!isLoading && !data?.comments.length && <p>该贴文没有评论</p>}
+      {!isLoading && !data?.length && <p>该贴文没有评论</p>}
     </div>
   )
 }

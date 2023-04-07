@@ -30,7 +30,7 @@ export default function SinglePost({ post, isDetail }: Props) {
     ["user", userId],
     () => getUserById(userId)
   )
-
+  console.log(data)
   const handleLiked = () => {
     setIsLiked((prev) => !prev)
   }

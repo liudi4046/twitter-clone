@@ -1,20 +1,15 @@
 import axios from "axios"
 
-export default async function sendLoginRequest() {
+export default async function sendLoginRequest({
+  email,
+  password,
+}: {
+  email: string
+  password: string
+}) {
   const body = {
-    lastName: "leo",
-    firstName: "steven",
-    email: "example@gmail.com",
-    gender: "male",
+    email,
+    password,
   }
-
-  const config = {
-    headers: {
-      "app-id": "642566ec75ad9137e92e3351",
-    },
-  }
-
-  return axios
-    .post("https://dummyapi.io/data/v1/user/create", body, config)
-    .then((res) => res.data)
+  return axios.post(`http://localhost:3001/login`, body).then((res) => res.data)
 }

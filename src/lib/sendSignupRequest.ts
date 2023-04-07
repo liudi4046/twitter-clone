@@ -1,20 +1,38 @@
 import axios from "axios"
-
-export default async function sendSignupRequest() {
+interface SignUpUser {
+  firstName: string
+  lastName: string
+  password: string
+  gender: string
+  age: number
+  email: string
+  image: string
+}
+export default async function sendSignupRequest({
+  firstName,
+  lastName,
+  password,
+  gender,
+  age,
+  email,
+  image,
+}: SignUpUser) {
   const body = {
-    lastName: "leo",
-    firstName: "steven",
-    email: "example@gmail.com",
-    gender: "male",
+    firstName,
+    lastName,
+    password,
+    gender,
+    age,
+    email,
+    image,
   }
-
-  const config = {
-    headers: {
-      "app-id": "642566ec75ad9137e92e3351",
-    },
-  }
-
+  console.log(body)
   return axios
-    .post("https://dummyapi.io/data/v1/user/create", body, config)
-    .then((res) => res.data)
+    .post("http://localhost:3001/users", body, {
+      headers: { "Content-Type": "application/json" },
+    })
+    .then((res) => {
+      console.log(res)
+      return res.data
+    })
 }

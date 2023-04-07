@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/home"
 import { LikedPostsProvider } from "./context/LikedPostsContext"
 import { ConfigProvider } from "antd"
-import Login from "./pages/login"
+
 import {
   useQuery,
   useMutation,
@@ -14,9 +14,12 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query"
 import UserInfo from "./pages/userInfo"
-import NavBar from "./NavBar"
+import NavBar from "./navBar"
 import About from "./pages/about"
 import PostDetail from "./pages/postDetail"
+
+import Login from "./pages/login/components/Login"
+import Signup from "./pages/login/components/Signup"
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -39,7 +42,8 @@ function App() {
             <NavBar />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/Signup" element={<Signup />} />
+              <Route path="/Login" element={<Login />} />
               <Route path="/user/:userId" element={<UserInfo />} />
               <Route path="/about" element={<About />} />
               <Route path="/postdetail/:postId" element={<PostDetail />} />
