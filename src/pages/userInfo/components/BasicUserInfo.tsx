@@ -37,10 +37,6 @@ export default function BasicUserInfo({ user }: { user: User }) {
           <li>
             Gender: <span className="">{user.gender}</span>
           </li>
-
-          <li>
-            Username: <span className="">{user.username}</span>
-          </li>
         </ul>
       </div>
     </div>

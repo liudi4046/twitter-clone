@@ -21,11 +21,11 @@ export default function UserPosts({ userId }: { userId: number }) {
         </div>
       )}
       {error && error.message}
-      {!isLoading && data?.posts.length === 0 && (
+      {!isLoading && data?.length === 0 && (
         <Empty description={<span>该用户没有发帖</span>} />
       )}
       <ul>
-        {data?.posts.map((post) => {
+        {data?.map((post) => {
           return <SinglePost key={post.id} post={post} isDetail={false} />
         })}
       </ul>

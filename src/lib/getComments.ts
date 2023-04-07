@@ -2,6 +2,6 @@ import axios from "axios"
 
 export default async function getComments(postId: number) {
   return axios
-    .get(`https://dummyjson.com/comments/post/${postId}`)
+    .get(`http://localhost:3001/comments?postId=${postId}`)
     .then((res) => res.data)
 }

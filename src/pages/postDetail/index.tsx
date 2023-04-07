@@ -8,10 +8,11 @@ import { LoadingOutlined } from "@ant-design/icons"
 import { Spin } from "antd"
 export default function PostDetail() {
   const { postId } = useParams()
-
+  console.log(postId)
   const { data: post, isLoading } = useQuery<Post>(["posts", postId], () =>
     getPostByPostId(parseInt(postId ?? ""))
   )
+  console.log(post)
   if (isLoading) {
     return (
       <div className="flex justify-center mt-24">
