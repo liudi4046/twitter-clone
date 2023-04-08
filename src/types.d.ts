@@ -20,7 +20,6 @@ export interface User {
   age: number
   gender: Gender
   email: string
-  username: string
   password: string
   image: string
 }

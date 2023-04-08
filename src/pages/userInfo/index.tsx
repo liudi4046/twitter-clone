@@ -15,7 +15,7 @@ export default function UserInfo() {
     isLoading,
     isError,
     error,
-  } = useQuery<User, AxiosError>(["User", id], () => getUserById(id))
+  } = useQuery<User, AxiosError>(["user", id], () => getUserById(id))
   if (!user) return <></>
 
   return (

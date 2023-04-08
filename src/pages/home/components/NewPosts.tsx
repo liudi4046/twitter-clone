@@ -17,10 +17,10 @@ export default function NewPosts() {
   const [pageNumber, setPageNumber] = useState(1)
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false)
   const { data, isLoading, isError, error } = useQuery<Posts, AxiosError>(
-    ["posts", searchTerm, pageNumber],
-    () => getPosts(searchTerm, pageNumber)
+    ["posts", searchTerm],
+    () => getPosts(searchTerm)
   )
-  console.log(data)
+
   const onSearch: (value: string) => void = (value: string) => {
     const fullName = value.replace(/\s+/g, "_")
     console.log(fullName)
@@ -32,7 +32,7 @@ export default function NewPosts() {
   const clickPrevious = () => {
     setPageNumber(pageNumber - 1)
   }
-  const handleAddPost = () => {}
+
   return (
     <div className="w-screen">
       <CreatePost

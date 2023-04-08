@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { useUser } from "../context/UserProvider"
 
 export default function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const navigate = useNavigate()
   const userToken = sessionStorage.getItem("userToken")
+  const { setCurrentUser } = useUser()
   useEffect(() => {
     if (userToken) {
       setIsLoggedIn(true)
@@ -13,6 +15,7 @@ export default function NavBar() {
   const handleSignInOrOut = () => {
     if (isLoggedIn) {
       sessionStorage.removeItem("userToken")
+      setCurrentUser?.(null)
       setIsLoggedIn(false)
     } else {
       navigate("/signup")

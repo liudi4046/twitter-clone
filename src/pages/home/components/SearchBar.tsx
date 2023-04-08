@@ -16,6 +16,7 @@ export default function SearchBar({
         color="red"
         size="large"
         onSearch={onSearch}
+        style={{ width: 500 }}
       />
     </div>
   )

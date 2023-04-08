@@ -20,7 +20,9 @@ import PostDetail from "./pages/postDetail"
 
 import Login from "./pages/login/components/Login"
 import Signup from "./pages/login/components/Signup"
-const queryClient = new QueryClient({
+import UserProvider from "./context/UserProvider"
+import { ToastContainer } from "react-toastify"
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
@@ -29,29 +31,32 @@ const queryClient = new QueryClient({
 })
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "",
-          },
-        }}
-      >
-        <LikedPostsProvider>
-          <BrowserRouter>
-            <NavBar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Signup" element={<Signup />} />
-              <Route path="/Login" element={<Login />} />
-              <Route path="/user/:userId" element={<UserInfo />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/postdetail/:postId" element={<PostDetail />} />
-            </Routes>
-          </BrowserRouter>
-        </LikedPostsProvider>
-      </ConfigProvider>
-    </QueryClientProvider>
+    <UserProvider>
+      <QueryClientProvider client={queryClient}>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "",
+            },
+          }}
+        >
+          <LikedPostsProvider>
+            <ToastContainer autoClose={2000} position="top-right" />
+            <BrowserRouter>
+              <NavBar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/Signup" element={<Signup />} />
+                <Route path="/Login" element={<Login />} />
+                <Route path="/user/:userId" element={<UserInfo />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/postdetail/:postId" element={<PostDetail />} />
+              </Routes>
+            </BrowserRouter>
+          </LikedPostsProvider>
+        </ConfigProvider>
+      </QueryClientProvider>
+    </UserProvider>
   )
 }
 

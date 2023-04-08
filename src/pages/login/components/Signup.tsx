@@ -52,7 +52,7 @@ export default function Signup() {
           position: toast.POSITION.TOP_CENTER,
         })
       } else if (res.data) {
-        localStorage.setItem("userToken", res.data.accessToken)
+        sessionStorage.setItem("userToken", res.data.accessToken)
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${res.data.accessToken}`
@@ -192,8 +192,6 @@ export default function Signup() {
             注册
           </Button>
         </div>
-
-        <ToastContainer autoClose={2000} />
       </form>
       <Link
         to={"/Login"}

@@ -8,15 +8,17 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
 import { ToastContainer, toast } from "react-toastify"
 import { Button, LinearProgress } from "@mui/material"
 import sendLoginRequest from "../../../lib/sendLoginRequest"
+import { contextUser, useUser } from "../../../context/UserProvider"
 type loginResponse = {
   accessToken: string
+  user: contextUser
 }
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const navigate = useNavigate()
-
+  const { setCurrentUser } = useUser()
   const { data, isFetching, refetch, error } = useQuery<
     loginResponse,
     AxiosError
@@ -31,7 +33,7 @@ export default function Login() {
       enabled: false, // 禁用初始化时发送请求
     }
   )
-
+  console.log(data)
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     refetch().then((res) => {
@@ -41,10 +43,8 @@ export default function Login() {
         })
       } else if (res.data) {
         sessionStorage.setItem("userToken", res.data.accessToken)
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${res.data.accessToken}`
 
+        setCurrentUser?.(res.data.user)
         toast.success("登录成功！^_^", {
           position: toast.POSITION.TOP_CENTER,
           onClose: () => navigate("/"),
@@ -52,6 +52,7 @@ export default function Login() {
       }
     })
   }
+  console.log(error)
 
   return (
     <div className="flex flex-col w-fit mx-auto gap-3 pt-10">
@@ -87,8 +88,6 @@ export default function Login() {
             登录
           </Button>
         </div>
-
-        <ToastContainer autoClose={2000} />
       </form>
       <Link
         to={"/signup"}

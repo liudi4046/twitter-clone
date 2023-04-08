@@ -30,17 +30,14 @@ export default function SinglePost({ post, isDetail }: Props) {
     ["user", userId],
     () => getUserById(userId)
   )
-  console.log(data)
+
   const handleLiked = () => {
     setIsLiked((prev) => !prev)
   }
   const handleComment = () => {
     setIsCommentOpened((prev) => !prev)
   }
-  const handleClickDetail = () => {
-    console.log("detail")
-    return <SinglePost post={post} isDetail={true} />
-  }
+
   return (
     <li className="mb-3 rounded-lg p-2 mx-1 drop-shadow-2xl bg-gradient-to-r shadow-lg ">
       {/* each post preview */}
