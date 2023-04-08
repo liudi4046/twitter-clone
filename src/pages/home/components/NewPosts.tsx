@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import SinglePost from "./SinglePost"
 
 import { useQuery } from "@tanstack/react-query"
@@ -11,30 +11,51 @@ import { Posts } from "../../../types"
 import { Empty } from "antd"
 import { Button, Fab } from "@mui/material"
 import CreatePost from "./CreatePost"
-
+import { useInView } from "react-intersection-observer"
+import { TransitionGroup, CSSTransition } from "react-transition-group"
 export default function NewPosts() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [pageNumber, setPageNumber] = useState(1)
+  const [page, setPage] = useState(1)
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false)
-  const { data, isLoading, isError, error } = useQuery<Posts, AxiosError>(
-    ["posts", searchTerm],
-    () => getPosts(searchTerm)
-  )
+  const [hasMore, setHasMore] = useState(true)
+  const [mergedData, setMergedData] = useState<Posts>([])
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
+  const { data, isLoading, isError, error, refetch } = useQuery<
+    Posts,
+    AxiosError
+  >(["posts", searchTerm, page], () => getPosts(searchTerm, page), {
+    onSettled: (data) => {
+      if (!data || data.length === 0 || data.length < 4) {
+        // Assuming 10 is the number of posts per page
+        setHasMore(false)
+      }
+      if (Array.isArray(data)) {
+        setMergedData((oldData) => [...oldData, ...data])
+      }
+    },
+  })
+  console.log("mergedata", mergedData)
+  console.log("hasMore", hasMore)
+  console.log("data.length", data?.length)
 
   const onSearch: (value: string) => void = (value: string) => {
     const fullName = value.replace(/\s+/g, "_")
     console.log(fullName)
     setSearchTerm(fullName)
   }
-  const clickNext = () => {
-    setPageNumber(pageNumber + 1)
-  }
-  const clickPrevious = () => {
-    setPageNumber(pageNumber - 1)
-  }
 
+  useEffect(() => {
+    if (inView && !isLoading && data && data.length > 0) {
+      setPage(page + 1)
+    }
+  }, [inView])
+  console.log(inView)
   return (
     <div className="w-screen">
+      page:{page}
       <CreatePost
         isCreatePostOpen={isCreatePostOpen}
         setIsCreatePostOpen={setIsCreatePostOpen}
@@ -58,34 +79,30 @@ export default function NewPosts() {
         </div>
       )}
       {isError && (error?.response?.status === 400 ? "错误" : error.message)}
-
       <ul className="grid grid-cols-2 w-2/3 mx-auto gap-6">
-        {data &&
-          data.map((post) => {
-            return <SinglePost key={post.id} post={post} isDetail={false} />
-          })}
+        <TransitionGroup component={null}>
+          {mergedData &&
+            mergedData.map((post, index) => {
+              return (
+                <CSSTransition key={post.id} timeout={10000} classNames="fade">
+                  <div>
+                    <SinglePost post={post} isDetail={false} />
+                    {index === mergedData.length - 1 && hasMore && (
+                      <div ref={ref} className="w-full h-1">
+                        {inView && <LoadingOutlined />}
+                      </div>
+                    )}
+                  </div>
+                </CSSTransition>
+              )
+            })}
+        </TransitionGroup>
       </ul>
-      <div
-        className={`w-2/3 flex justify-end my-4 mx-auto gap-3 ${
-          data?.length === 0 || isLoading ? "hidden" : ""
-        }`}
-      >
-        <Button
-          variant="outlined"
-          disabled={pageNumber === 1}
-          onClick={() => clickPrevious()}
-        >
-          上一页
-        </Button>
-        <Button
-          variant="outlined"
-          onClick={() => clickNext()}
-          disabled={data?.length !== 6}
-        >
-          下一页
-        </Button>
-        {/* <Button type="primary">下一页</Button> */}
-      </div>
+      {!hasMore && (
+        <div className="text-center font-light text-slate-500 my-5">
+          没有更多数据了~~~
+        </div>
+      )}
       <Fab
         color="primary"
         aria-label="add"
