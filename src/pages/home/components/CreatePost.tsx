@@ -13,6 +13,7 @@ import { useUser } from "../../../context/UserProvider"
 import axios from "axios"
 import { Post, Posts } from "../../../types"
 import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 export type PostWithOutId = {
   title: string
@@ -24,15 +25,25 @@ export type PostWithOutId = {
 export default function CreatePost({
   isCreatePostOpen,
   setIsCreatePostOpen,
+  setMergedData,
+  setPage,
+  setSearchTerm,
+  refetch,
+  setHasMore,
 }: {
   isCreatePostOpen: boolean
   setIsCreatePostOpen: (value: boolean) => void
+  setMergedData: React.Dispatch<React.SetStateAction<Posts>>
+  setPage: React.Dispatch<React.SetStateAction<number>>
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>
+  refetch: any
+  setHasMore: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
   const { currentUser } = useUser()
   const queryClient = useQueryClient()
-
+  const navigate = useNavigate()
   const { mutate } = useMutation(
     async (newPost: PostWithOutId) => {
       const userToken = sessionStorage.getItem("userToken")
@@ -50,15 +61,22 @@ export default function CreatePost({
     },
     {
       onSuccess: (newPost: Post) => {
-        queryClient.invalidateQueries(["posts", ""])
+        setMergedData([])
+        setPage(1)
+        setSearchTerm("")
+        setHasMore(true)
+        refetch()
+        // queryClient.invalidateQueries(["posts", ""])
       },
     }
   )
 
   const handleSubmit = () => {
+    console.log(currentUser)
     if (!currentUser) {
       toast("登录后即可发帖")
       setIsCreatePostOpen(false)
+      navigate("/signup")
       return
     }
     const newPost: PostWithOutId = {

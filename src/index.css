@@ -16,28 +16,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.post-enter {
-  opacity: 0;
-  transition: opacity 500ms, transform 5000ms;
-  transform: translateY(20px);
-}
 
-.post-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 500ms, transform 2000ms;
-}
-
-.post-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.post-exit-active {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 500ms, transform 500ms;
-}
 .fade-enter {
   opacity: 0;
 }
@@ -53,5 +32,5 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .fade-exit-active {
   opacity: 0;
-  transition: opacity 500ms ease-in;
+  transition: opacity 0ms ease-in;
 }

@@ -9,6 +9,7 @@ import { User } from "../../../types"
 import axios, { AxiosError } from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import { type } from "os"
+import { useUser } from "../../../context/UserProvider"
 type signupResponse = {
   accessToken: string
   user: User
@@ -23,7 +24,7 @@ export default function Signup() {
   const [image, setImage] = useState("/images/defaultAvatar.jpg")
   const navigate = useNavigate()
   const fileInputRef = useRef<HTMLInputElement>(null)
-
+  const { setCurrentUser } = useUser()
   const { data, isFetching, refetch, error } = useQuery<
     signupResponse,
     AxiosError
@@ -53,9 +54,7 @@ export default function Signup() {
         })
       } else if (res.data) {
         sessionStorage.setItem("userToken", res.data.accessToken)
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${res.data.accessToken}`
+        setCurrentUser?.(res.data.user)
 
         toast.success("注册成功！^_^", {
           position: toast.POSITION.TOP_CENTER,

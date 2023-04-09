@@ -10,7 +10,9 @@ const getPosts = async (term: string, pageNumber: number): Promise<Posts> => {
         ? `http://localhost:3001/posts?_sort=id&_order=desc&_limit=${4}&_start=${
             (pageNumber - 1) * 4
           }`
-        : `http://localhost:3001/posts?q=${term}&_sort=id&_order=desc`
+        : `http://localhost:3001/posts?q=${term}&_sort=id&_order=desc&_limit=${4}&_start=${
+            (pageNumber - 1) * 4
+          }`
     )
     .then((res) => {
       return res.data

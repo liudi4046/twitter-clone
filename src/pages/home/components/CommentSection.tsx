@@ -4,7 +4,7 @@ import { CommentUser, Comments } from "../../../types"
 import getComments from "../../../lib/getComments"
 import axios, { AxiosError } from "axios"
 import { LoadingOutlined } from "@ant-design/icons"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import TextField from "@mui/material/TextField"
 import { Empty } from "antd"
 import { Button } from "@mui/material"
@@ -22,7 +22,7 @@ export default function CommentSection({ postId }: { postId: number }) {
   //   "GET",
   //   {}
   // )
-
+  const navigate = useNavigate()
   const [comment, setComment] = useState("")
   const { data, isLoading, error } = useQuery<Comments, AxiosError>(
     ["comments", postId],
@@ -57,6 +57,7 @@ export default function CommentSection({ postId }: { postId: number }) {
     console.log(currentUser)
     if (!currentUser) {
       toast("登录后即可发表评论")
+      navigate("/signup")
       return
     }
 

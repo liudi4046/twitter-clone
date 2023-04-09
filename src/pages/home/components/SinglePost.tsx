@@ -39,7 +39,7 @@ export default function SinglePost({ post, isDetail }: Props) {
   }
 
   return (
-    <li className="mb-3 rounded-lg p-2 mx-1 drop-shadow-2xl bg-gradient-to-r shadow-lg ">
+    <li className="mb-3 rounded-lg p-2 mx-1 drop-shadow-2xl bg-gradient-to-r shadow-lg h-full">
       {/* each post preview */}
       <div className="flex flex-col gap-2 h-full justify-between">
         <div className="flex flex-col gap-2">

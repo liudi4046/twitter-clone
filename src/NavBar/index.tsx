@@ -6,9 +6,9 @@ export default function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const navigate = useNavigate()
   const userToken = sessionStorage.getItem("userToken")
-  const { setCurrentUser } = useUser()
+  const { setCurrentUser, currentUser } = useUser()
   useEffect(() => {
-    if (userToken) {
+    if (currentUser) {
       setIsLoggedIn(true)
     }
   }, [userToken])

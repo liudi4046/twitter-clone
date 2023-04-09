@@ -9,7 +9,7 @@ import getPosts from "../../../lib/getPosts"
 import { LoadingOutlined } from "@ant-design/icons"
 import { Posts } from "../../../types"
 import { Empty } from "antd"
-import { Button, Fab } from "@mui/material"
+import { Fab } from "@mui/material"
 import CreatePost from "./CreatePost"
 import { useInView } from "react-intersection-observer"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
@@ -18,33 +18,34 @@ export default function NewPosts() {
   const [page, setPage] = useState(1)
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false)
   const [hasMore, setHasMore] = useState(true)
+  const [transitionKey, settransitionKey] = useState(1)
   const [mergedData, setMergedData] = useState<Posts>([])
   const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
+    threshold: 0.5,
   })
   const { data, isLoading, isError, error, refetch } = useQuery<
     Posts,
     AxiosError
   >(["posts", searchTerm, page], () => getPosts(searchTerm, page), {
-    onSettled: (data) => {
+    onSuccess: (data) => {
       if (!data || data.length === 0 || data.length < 4) {
-        // Assuming 10 is the number of posts per page
         setHasMore(false)
       }
       if (Array.isArray(data)) {
         setMergedData((oldData) => [...oldData, ...data])
       }
     },
+    cacheTime: 0,
   })
-  console.log("mergedata", mergedData)
-  console.log("hasMore", hasMore)
-  console.log("data.length", data?.length)
 
   const onSearch: (value: string) => void = (value: string) => {
-    const fullName = value.replace(/\s+/g, "_")
-    console.log(fullName)
-    setSearchTerm(fullName)
+    console.log(null)
+    setMergedData([])
+    setPage(1)
+    settransitionKey((prev) => prev + 1)
+    setSearchTerm(value)
+    refetch()
+    setHasMore(true)
   }
 
   useEffect(() => {
@@ -52,24 +53,28 @@ export default function NewPosts() {
       setPage(page + 1)
     }
   }, [inView])
-  console.log(inView)
+
   return (
     <div className="w-screen">
-      page:{page}
       <CreatePost
         isCreatePostOpen={isCreatePostOpen}
         setIsCreatePostOpen={setIsCreatePostOpen}
+        setMergedData={setMergedData}
+        setPage={setPage}
+        setSearchTerm={setSearchTerm}
+        refetch={refetch}
+        setHasMore={setHasMore}
       />
       <div className="h-96 justify-center flex bg-gradient-to-r from-blue-500 to-blue-200 mb-3 flex-col gap-3">
         <h1 className="font-bold text-2xl text-center">欢迎来到Dummy Blog!</h1>
         <SearchBar onSearch={onSearch} />
       </div>
-      {isLoading && (
+      {isLoading && !mergedData.length && (
         <div className="flex justify-center">
           <LoadingOutlined />
         </div>
       )}
-      {!isLoading && data?.length === 0 && (
+      {!isLoading && mergedData.length === 0 && (
         <div className="flex justify-center">
           <Empty
             description={
@@ -80,25 +85,29 @@ export default function NewPosts() {
       )}
       {isError && (error?.response?.status === 400 ? "错误" : error.message)}
       <ul className="grid grid-cols-2 w-2/3 mx-auto gap-6">
-        <TransitionGroup component={null}>
+        <TransitionGroup component={null} key={transitionKey}>
           {mergedData &&
             mergedData.map((post, index) => {
               return (
-                <CSSTransition key={post.id} timeout={10000} classNames="fade">
+                <CSSTransition key={post.id} timeout={1000} classNames="fade">
                   <div>
                     <SinglePost post={post} isDetail={false} />
-                    {index === mergedData.length - 1 && hasMore && (
-                      <div ref={ref} className="w-full h-1">
+                    {/* {index === mergedData.length - 1 && hasMore && (
+                      <div className="" ref={ref}>
                         {inView && <LoadingOutlined />}
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </CSSTransition>
               )
             })}
         </TransitionGroup>
       </ul>
-      {!hasMore && (
+      <div
+        className="text-center font-light text-slate-500 my-5"
+        ref={ref}
+      ></div>
+      {!hasMore && !(!isLoading && mergedData.length === 0) && (
         <div className="text-center font-light text-slate-500 my-5">
           没有更多数据了~~~
         </div>
