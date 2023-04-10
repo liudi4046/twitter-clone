@@ -43,3 +43,8 @@ export interface CommentUser {
   id: number
   username: string
 }
+export interface Follow {
+  id: number
+  srcUser: User
+  toUser: User
+}
