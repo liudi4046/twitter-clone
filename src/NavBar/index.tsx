@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useUser } from "../context/UserProvider"
+import AccountMenu from "./components/AccountMenu"
 
 export default function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -14,9 +15,9 @@ export default function NavBar() {
   }, [userToken])
   const handleSignInOrOut = () => {
     if (isLoggedIn) {
-      sessionStorage.removeItem("userToken")
-      setCurrentUser?.(null)
-      setIsLoggedIn(false)
+      // sessionStorage.removeItem("userToken")
+      // setCurrentUser?.(null)
+      // setIsLoggedIn(false)
     } else {
       navigate("/signup")
     }
@@ -27,7 +28,7 @@ export default function NavBar() {
         <div className="hover:text-blue-200">Dummy Blog</div>
       </Link>
 
-      <div className="flex gap-6">
+      <div className="flex gap-6 items-center">
         <Link to={"/"}>
           <div className="hover:text-blue-200">Home</div>
         </Link>
@@ -36,10 +37,10 @@ export default function NavBar() {
         </Link>
 
         <div
-          className="hover:text-blue-200 hover:cursor-pointer"
+          className="hover:text-blue-200 hover:cursor-pointer "
           onClick={handleSignInOrOut}
         >
-          {isLoggedIn ? "登出" : "登录"}
+          {isLoggedIn ? <AccountMenu setIsLoggedIn={setIsLoggedIn} /> : "登录"}
         </div>
       </div>
     </nav>

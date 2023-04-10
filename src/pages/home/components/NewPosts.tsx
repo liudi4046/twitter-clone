@@ -37,7 +37,7 @@ export default function NewPosts() {
     },
     cacheTime: 0,
   })
-
+  console.log(process.env.REACT_APP_JSONSERVER)
   const onSearch: (value: string) => void = (value: string) => {
     console.log(null)
     setMergedData([])

@@ -11,5 +11,7 @@ export default async function sendLoginRequest({
     email,
     password,
   }
-  return axios.post(`http://localhost:3001/login`, body).then((res) => res.data)
+  return axios
+    .post(`${process.env.REACT_APP_JSONSERVER}/login`, body)
+    .then((res) => res.data)
 }

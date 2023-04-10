@@ -34,7 +34,7 @@ export default function CommentSection({ postId }: { postId: number }) {
       const userToken = sessionStorage.getItem("userToken")
 
       const response = await axios.post(
-        "http://localhost:3001/comments",
+        `${process.env.REACT_APP_JSONSERVER}/comments`,
         newComment,
         {
           headers: {

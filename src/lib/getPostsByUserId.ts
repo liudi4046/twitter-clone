@@ -3,6 +3,6 @@ import React from "react"
 
 export default function getPostsByUserId(userId: number) {
   return axios
-    .get(`http://localhost:3001/posts?userId=${userId}`)
+    .get(`${process.env.REACT_APP_JSONSERVER}/posts?userId=${userId}`)
     .then((res) => res.data)
 }

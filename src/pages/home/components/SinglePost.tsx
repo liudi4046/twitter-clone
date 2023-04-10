@@ -8,10 +8,11 @@ import { useLikedPosts } from "../../../context/LikedPostsContext"
 import CommentSection from "./CommentSection"
 import { CommentOutlined, LikeFilled, LikeOutlined } from "@ant-design/icons"
 import { Post, User } from "../../../types"
-import { Button } from "antd"
+import { Avatar, Button } from "antd"
 import { AxiosError } from "axios"
 import getUserById from "../../../lib/getUserById"
 import { useQuery } from "@tanstack/react-query"
+import { useUser } from "../../../context/UserProvider"
 interface Props {
   post: Post
   isDetail: boolean
@@ -24,7 +25,7 @@ export default function SinglePost({ post, isDetail }: Props) {
   const postId = post.id
   const title = post.title
   const reactions = post.reactions
-
+  const { currentUser } = useUser()
   const userId = post.userId
   const { data, isLoading, isError, error } = useQuery<User, AxiosError>(
     ["user", userId],
@@ -45,9 +46,12 @@ export default function SinglePost({ post, isDetail }: Props) {
         <div className="flex flex-col gap-2">
           <h1 className="font-bold text-center">{title}</h1>
           <Link to={`/user/${userId}`}>
-            <h1 className="text-sm text-center hover:underline hover:text-blue-400 text-blue-800">
-              {data?.firstName} {data?.lastName}
-            </h1>
+            <div className="flex items-center gap-1 justify-center">
+              <Avatar alt={`${data?.firstName}`} src={`${data?.image}`} />
+              <div className="text-sm text-center hover:underline hover:text-blue-400 text-blue-800">
+                {data?.firstName} {data?.lastName}
+              </div>
+            </div>
           </Link>
         </div>
         <div className="max-h-30 overflow-hidden">

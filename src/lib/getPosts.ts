@@ -7,10 +7,14 @@ const getPosts = async (term: string, pageNumber: number): Promise<Posts> => {
   return axios
     .get(
       !term.length
-        ? `http://localhost:3001/posts?_sort=id&_order=desc&_limit=${4}&_start=${
+        ? `${
+            process.env.REACT_APP_JSONSERVER
+          }/posts?_sort=id&_order=desc&_limit=${4}&_start=${
             (pageNumber - 1) * 4
           }`
-        : `http://localhost:3001/posts?q=${term}&_sort=id&_order=desc&_limit=${4}&_start=${
+        : `${
+            process.env.REACT_APP_JSONSERVER
+          }/posts?q=${term}&_sort=id&_order=desc&_limit=${4}&_start=${
             (pageNumber - 1) * 4
           }`
     )

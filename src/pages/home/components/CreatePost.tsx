@@ -49,7 +49,7 @@ export default function CreatePost({
       const userToken = sessionStorage.getItem("userToken")
 
       const response = await axios.post(
-        "http://localhost:3001/posts",
+        `${process.env.REACT_APP_JSONSERVER}/posts`,
         newPost,
         {
           headers: {
@@ -65,8 +65,8 @@ export default function CreatePost({
         setPage(1)
         setSearchTerm("")
         setHasMore(true)
-        refetch()
-        // queryClient.invalidateQueries(["posts", ""])
+        // refetch()
+        queryClient.invalidateQueries(["posts", ""])
       },
     }
   )

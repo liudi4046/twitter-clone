@@ -1,4 +1,5 @@
 import axios from "axios"
+
 interface SignUpUser {
   firstName: string
   lastName: string
@@ -28,7 +29,7 @@ export default async function sendSignupRequest({
   }
   console.log(body)
   return axios
-    .post("http://localhost:3001/users", body, {
+    .post(`${process.env.REACT_APP_JSONSERVER}/users`, body, {
       headers: { "Content-Type": "application/json" },
     })
     .then((res) => {
