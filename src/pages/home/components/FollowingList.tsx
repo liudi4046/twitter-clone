@@ -10,6 +10,8 @@ import { useUser } from "../../../context/UserProvider"
 import getFollows from "../../../lib/getFollows"
 import getUserById from "../../../lib/getUserById"
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { Follow } from "../../../types"
 
 export default function FollowingList() {
   const { currentUser } = useUser()
@@ -20,18 +22,10 @@ export default function FollowingList() {
   } = useQuery(["follows", { srcId: currentUser?.id }], () =>
     getFollows({ srcId: currentUser?.id ?? 9999 })
   )
-  //   const { data:users, isLoading: isUsersLoading, error: usersError } = useQuery(
-  //     ["follows", { srcId: currentUser?.id }],
-  //     () => getUserById(),
-  //     {
-  //         enabled:false
-  //     }
-  //   )
-  //   useEffect(()=>{
-  //     if(followings){
-
-  //     }
-  //   },[followings])
+  const navigate = useNavigate()
+  const handleClick = (follow: Follow) => {
+    navigate(`/user/${follow.toUser.id}`)
+  }
 
   return (
     <List
@@ -40,8 +34,6 @@ export default function FollowingList() {
         bgcolor: "background.paper",
         marginRight: 5,
         borderRadius: 3,
-        position: "sticky",
-        top: 20,
       }}
     >
       <h1 className="text-center font-bold">我关注的</h1>
@@ -52,7 +44,12 @@ export default function FollowingList() {
             sx={{
               display: "flex",
               alignItems: "center",
+              ":hover": {
+                cursor: "pointer",
+                color: "#2196f3",
+              },
             }}
+            onClick={() => handleClick(follow)}
           >
             <ListItemAvatar>
               <Avatar alt="Remy Sharp" src={follow.toUser.image} />
