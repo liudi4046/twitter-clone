@@ -1,0 +1,50 @@
+"filename", "language", "JavaScript", "JSON", "JSON with Comments", "Properties", "Markdown", "CSS", "TypeScript JSX", "TypeScript", "HTML", "comment", "blank", "total"
+"e:\projectrestart\new-socialmedia\.env", "Properties", 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"e:\projectrestart\new-socialmedia\README.md", "Markdown", 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 21, 47
+"e:\projectrestart\new-socialmedia\dist\output.css", "CSS", 0, 0, 0, 0, 0, 346, 0, 0, 0, 155, 76, 577
+"e:\projectrestart\new-socialmedia\package-lock.json", "JSON", 0, 18303, 0, 0, 0, 0, 0, 0, 0, 0, 1, 18304
+"e:\projectrestart\new-socialmedia\package.json", "JSON", 0, 61, 0, 0, 0, 0, 0, 0, 0, 0, 1, 62
+"e:\projectrestart\new-socialmedia\public\index.html", "HTML", 0, 0, 0, 0, 0, 0, 0, 0, 21, 23, 1, 45
+"e:\projectrestart\new-socialmedia\public\manifest.json", "JSON", 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 1, 26
+"e:\projectrestart\new-socialmedia\src\App.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 59, 0, 0, 0, 5, 64
+"e:\projectrestart\new-socialmedia\src\context\LikedPostsContext.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 4, 29
+"e:\projectrestart\new-socialmedia\src\context\NotificationContext.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 2, 12
+"e:\projectrestart\new-socialmedia\src\context\UserProvider.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 28, 0, 0, 0, 4, 32
+"e:\projectrestart\new-socialmedia\src\index.css", "CSS", 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 6, 37
+"e:\projectrestart\new-socialmedia\src\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 6, 0, 0, 2, 3, 11
+"e:\projectrestart\new-socialmedia\src\lib\calTime.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 23, 0, 0, 3, 26
+"e:\projectrestart\new-socialmedia\src\lib\getComments.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 2, 10
+"e:\projectrestart\new-socialmedia\src\lib\getFollows.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 21, 0, 0, 2, 23
+"e:\projectrestart\new-socialmedia\src\lib\getPostByPostId.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 2, 13
+"e:\projectrestart\new-socialmedia\src\lib\getPosts.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 2, 26
+"e:\projectrestart\new-socialmedia\src\lib\getPostsByUserId.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 2, 9
+"e:\projectrestart\new-socialmedia\src\lib\getUserById.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 2, 11
+"e:\projectrestart\new-socialmedia\src\lib\getUsers.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 2, 0, 7, 2, 11
+"e:\projectrestart\new-socialmedia\src\lib\sendLoginRequest.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 2, 18
+"e:\projectrestart\new-socialmedia\src\lib\sendSignupRequest.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 38, 0, 0, 2, 40
+"e:\projectrestart\new-socialmedia\src\lib\toggleFollow.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 39, 0, 0, 2, 41
+"e:\projectrestart\new-socialmedia\src\navBar\components\AccountMenu.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 103, 0, 0, 0, 5, 108
+"e:\projectrestart\new-socialmedia\src\navBar\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 42, 0, 0, 3, 4, 49
+"e:\projectrestart\new-socialmedia\src\pages\about\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 2, 16
+"e:\projectrestart\new-socialmedia\src\pages\home\components\AllPosts.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 132, 0, 0, 7, 5, 144
+"e:\projectrestart\new-socialmedia\src\pages\home\components\CommentSection.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 115, 0, 0, 5, 5, 125
+"e:\projectrestart\new-socialmedia\src\pages\home\components\CreatePost.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 118, 0, 0, 1, 4, 123
+"e:\projectrestart\new-socialmedia\src\pages\home\components\FollowedList.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 64, 0, 0, 0, 3, 67
+"e:\projectrestart\new-socialmedia\src\pages\home\components\FollowingList.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 64, 0, 0, 0, 3, 67
+"e:\projectrestart\new-socialmedia\src\pages\home\components\FriendList.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 2, 13
+"e:\projectrestart\new-socialmedia\src\pages\home\components\LeftBar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 2, 6
+"e:\projectrestart\new-socialmedia\src\pages\home\components\RightBar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 2, 6
+"e:\projectrestart\new-socialmedia\src\pages\home\components\SearchBar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 2, 24
+"e:\projectrestart\new-socialmedia\src\pages\home\components\SinglePost.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 92, 0, 0, 2, 6, 100
+"e:\projectrestart\new-socialmedia\src\pages\home\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 1, 15
+"e:\projectrestart\new-socialmedia\src\pages\login\components\Login.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 95, 0, 0, 0, 6, 101
+"e:\projectrestart\new-socialmedia\src\pages\login\components\Signup.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 106, 0, 0, 90, 8, 204
+"e:\projectrestart\new-socialmedia\src\pages\login\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 11, 0, 0, 5, 4, 20
+"e:\projectrestart\new-socialmedia\src\pages\postDetail\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 29, 0, 0, 0, 1, 30
+"e:\projectrestart\new-socialmedia\src\pages\userInfo\components\BasicUserInfo.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 98, 0, 0, 0, 2, 100
+"e:\projectrestart\new-socialmedia\src\pages\userInfo\components\UserPosts.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 3, 35
+"e:\projectrestart\new-socialmedia\src\pages\userInfo\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 3, 28
+"e:\projectrestart\new-socialmedia\src\types.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 40, 0, 3, 8, 51
+"e:\projectrestart\new-socialmedia\tailwind.config.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 9
+"e:\projectrestart\new-socialmedia\tsconfig.json", "JSON with Comments", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 2, 22
+"Total", "-", 7, 18389, 20, 1, 26, 377, 1323, 238, 21, 304, 232, 20938

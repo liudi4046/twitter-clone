@@ -1,0 +1,102 @@
+Date : 2023-04-11 09:48:41
+Directory : e:\projectrestart\new-socialmedia
+Total : 48 files,  20402 codes, 304 comments, 232 blanks, all 20938 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          3 |     18,389 |          0 |          3 |     18,392 |
+| TypeScript JSX     |         26 |      1,323 |        115 |         91 |      1,529 |
+| CSS                |          2 |        377 |        155 |         82 |        614 |
+| TypeScript         |         12 |        238 |         10 |         31 |        279 |
+| Markdown           |          1 |         26 |          0 |         21 |         47 |
+| HTML               |          1 |         21 |         23 |          1 |         45 |
+| JSON with Comments |          1 |         20 |          0 |          2 |         22 |
+| JavaScript         |          1 |          7 |          1 |          1 |          9 |
+| Properties         |          1 |          1 |          0 |          0 |          1 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                              | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                 |         48 |     20,402 |        304 |        232 |     20,938 |
+| . (Files)                                                                         |          6 |     18,418 |          1 |         26 |     18,445 |
+| dist                                                                              |          1 |        346 |        155 |         76 |        577 |
+| public                                                                            |          2 |         46 |         23 |          2 |         71 |
+| src                                                                               |         39 |      1,592 |        125 |        128 |      1,845 |
+| src (Files)                                                                       |          4 |        136 |          5 |         22 |        163 |
+| src\context                                                                       |          3 |         63 |          0 |         10 |         73 |
+| src\lib                                                                           |         11 |        198 |          7 |         23 |        228 |
+| src\navBar                                                                        |          2 |        145 |          3 |          9 |        157 |
+| src\navBar (Files)                                                                |          1 |         42 |          3 |          4 |         49 |
+| src\navBar\components                                                             |          1 |        103 |          0 |          5 |        108 |
+| src\pages                                                                         |         19 |      1,050 |        110 |         64 |      1,224 |
+| src\pages\about                                                                   |          1 |         14 |          0 |          2 |         16 |
+| src\pages\home                                                                    |         11 |        640 |         15 |         35 |        690 |
+| src\pages\home (Files)                                                            |          1 |         14 |          0 |          1 |         15 |
+| src\pages\home\components                                                         |         10 |        626 |         15 |         34 |        675 |
+| src\pages\login                                                                   |          3 |        212 |         95 |         18 |        325 |
+| src\pages\login (Files)                                                           |          1 |         11 |          5 |          4 |         20 |
+| src\pages\login\components                                                        |          2 |        201 |         90 |         14 |        305 |
+| src\pages\postDetail                                                              |          1 |         29 |          0 |          1 |         30 |
+| src\pages\userInfo                                                                |          3 |        155 |          0 |          8 |        163 |
+| src\pages\userInfo (Files)                                                        |          1 |         25 |          0 |          3 |         28 |
+| src\pages\userInfo\components                                                     |          2 |        130 |          0 |          5 |        135 |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                          | language           | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| e:\projectrestart\new-socialmedia\.env                                            | Properties         |          1 |          0 |          0 |          1 |
+| e:\projectrestart\new-socialmedia\README.md                                       | Markdown           |         26 |          0 |         21 |         47 |
+| e:\projectrestart\new-socialmedia\dist\output.css                                 | CSS                |        346 |        155 |         76 |        577 |
+| e:\projectrestart\new-socialmedia\package-lock.json                               | JSON               |     18,303 |          0 |          1 |     18,304 |
+| e:\projectrestart\new-socialmedia\package.json                                    | JSON               |         61 |          0 |          1 |         62 |
+| e:\projectrestart\new-socialmedia\public\index.html                               | HTML               |         21 |         23 |          1 |         45 |
+| e:\projectrestart\new-socialmedia\public\manifest.json                            | JSON               |         25 |          0 |          1 |         26 |
+| e:\projectrestart\new-socialmedia\src\App.tsx                                     | TypeScript JSX     |         59 |          0 |          5 |         64 |
+| e:\projectrestart\new-socialmedia\src\context\LikedPostsContext.tsx               | TypeScript JSX     |         25 |          0 |          4 |         29 |
+| e:\projectrestart\new-socialmedia\src\context\NotificationContext.tsx             | TypeScript JSX     |         10 |          0 |          2 |         12 |
+| e:\projectrestart\new-socialmedia\src\context\UserProvider.tsx                    | TypeScript JSX     |         28 |          0 |          4 |         32 |
+| e:\projectrestart\new-socialmedia\src\index.css                                   | CSS                |         31 |          0 |          6 |         37 |
+| e:\projectrestart\new-socialmedia\src\index.tsx                                   | TypeScript JSX     |          6 |          2 |          3 |         11 |
+| e:\projectrestart\new-socialmedia\src\lib\calTime.ts                              | TypeScript         |         23 |          0 |          3 |         26 |
+| e:\projectrestart\new-socialmedia\src\lib\getComments.ts                          | TypeScript         |          8 |          0 |          2 |         10 |
+| e:\projectrestart\new-socialmedia\src\lib\getFollows.ts                           | TypeScript         |         21 |          0 |          2 |         23 |
+| e:\projectrestart\new-socialmedia\src\lib\getPostByPostId.ts                      | TypeScript         |         11 |          0 |          2 |         13 |
+| e:\projectrestart\new-socialmedia\src\lib\getPosts.ts                             | TypeScript         |         24 |          0 |          2 |         26 |
+| e:\projectrestart\new-socialmedia\src\lib\getPostsByUserId.ts                     | TypeScript         |          7 |          0 |          2 |          9 |
+| e:\projectrestart\new-socialmedia\src\lib\getUserById.ts                          | TypeScript         |          9 |          0 |          2 |         11 |
+| e:\projectrestart\new-socialmedia\src\lib\getUsers.ts                             | TypeScript         |          2 |          7 |          2 |         11 |
+| e:\projectrestart\new-socialmedia\src\lib\sendLoginRequest.ts                     | TypeScript         |         16 |          0 |          2 |         18 |
+| e:\projectrestart\new-socialmedia\src\lib\sendSignupRequest.ts                    | TypeScript         |         38 |          0 |          2 |         40 |
+| e:\projectrestart\new-socialmedia\src\lib\toggleFollow.ts                         | TypeScript         |         39 |          0 |          2 |         41 |
+| e:\projectrestart\new-socialmedia\src\navBar\components\AccountMenu.tsx           | TypeScript JSX     |        103 |          0 |          5 |        108 |
+| e:\projectrestart\new-socialmedia\src\navBar\index.tsx                            | TypeScript JSX     |         42 |          3 |          4 |         49 |
+| e:\projectrestart\new-socialmedia\src\pages\about\index.tsx                       | TypeScript JSX     |         14 |          0 |          2 |         16 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\AllPosts.tsx          | TypeScript JSX     |        132 |          7 |          5 |        144 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\CommentSection.tsx    | TypeScript JSX     |        115 |          5 |          5 |        125 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\CreatePost.tsx        | TypeScript JSX     |        118 |          1 |          4 |        123 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\FollowedList.tsx      | TypeScript JSX     |         64 |          0 |          3 |         67 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\FollowingList.tsx     | TypeScript JSX     |         64 |          0 |          3 |         67 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\FriendList.tsx        | TypeScript JSX     |         11 |          0 |          2 |         13 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\LeftBar.tsx           | TypeScript JSX     |          4 |          0 |          2 |          6 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\RightBar.tsx          | TypeScript JSX     |          4 |          0 |          2 |          6 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\SearchBar.tsx         | TypeScript JSX     |         22 |          0 |          2 |         24 |
+| e:\projectrestart\new-socialmedia\src\pages\home\components\SinglePost.tsx        | TypeScript JSX     |         92 |          2 |          6 |        100 |
+| e:\projectrestart\new-socialmedia\src\pages\home\index.tsx                        | TypeScript JSX     |         14 |          0 |          1 |         15 |
+| e:\projectrestart\new-socialmedia\src\pages\login\components\Login.tsx            | TypeScript JSX     |         95 |          0 |          6 |        101 |
+| e:\projectrestart\new-socialmedia\src\pages\login\components\Signup.tsx           | TypeScript JSX     |        106 |         90 |          8 |        204 |
+| e:\projectrestart\new-socialmedia\src\pages\login\index.tsx                       | TypeScript JSX     |         11 |          5 |          4 |         20 |
+| e:\projectrestart\new-socialmedia\src\pages\postDetail\index.tsx                  | TypeScript JSX     |         29 |          0 |          1 |         30 |
+| e:\projectrestart\new-socialmedia\src\pages\userInfo\components\BasicUserInfo.tsx | TypeScript JSX     |         98 |          0 |          2 |        100 |
+| e:\projectrestart\new-socialmedia\src\pages\userInfo\components\UserPosts.tsx     | TypeScript JSX     |         32 |          0 |          3 |         35 |
+| e:\projectrestart\new-socialmedia\src\pages\userInfo\index.tsx                    | TypeScript JSX     |         25 |          0 |          3 |         28 |
+| e:\projectrestart\new-socialmedia\src\types.d.ts                                  | TypeScript         |         40 |          3 |          8 |         51 |
+| e:\projectrestart\new-socialmedia\tailwind.config.js                              | JavaScript         |          7 |          1 |          1 |          9 |
+| e:\projectrestart\new-socialmedia\tsconfig.json                                   | JSON with Comments |         20 |          0 |          2 |         22 |
+| Total                                                                             |                    |     20,402 |        304 |        232 |     20,938 |
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
